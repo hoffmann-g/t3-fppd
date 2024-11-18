@@ -17,7 +17,7 @@ Images are generated in .ppm format and stored in the `./output` directory.
 
 ```bash
 gcc mandelbrot.c -o mandelbrot_seq -lm
-srun --nodes=1 1 --ntasks=1 ./mandelbrot_seq
+srun --nodes=1 --ntasks=1 ./mandelbrot_seq
 ```
 
 ![mandelbrot](https://github.com/mvneves/parallel-mandelbrot/raw/master/output/readme.png)
@@ -33,13 +33,13 @@ srun --nodes=1 --ntasks=1 --cpus-per-task=8 ./mandelbrot_omp
 
 Explanation:
 - --nodes=1: Allocates one node.
-- --ntasks=1: Requests a single task (process).
+- --ntasks=1: Executes a single task (process).
 - --cpus-per-task=8: Allocates 8 cores for the task.
 
 MPI:
 ```bash
 mpicc parallel/mandelbrot_mpi.c -o mandelbrot_mpi -lm
-srun --nodes=2 --ntasks=16 --pty bash
+srun --nodes=2 --ntasks=16 mandelbrot_mpi
 ```
 
 Explanation:
