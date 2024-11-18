@@ -4,15 +4,15 @@
 
 #define uchar unsigned char
 
-#define X 1920
-#define Y 1080
+#define X 7680
+#define Y 4320
 
 #define R_MAX 1.5
 #define R_MIN -2
 #define I_MAX 1.0
 #define I_MIN -I_MAX
 
-#define MAX_ITER 8000
+#define MAX_ITER 60000
 
 typedef struct {
     uchar r;
@@ -45,6 +45,7 @@ Color mandelbrot(int px, int py, Color* palette){
         y2 = y*y;
         i++;
     }
+
     if(i < MAX_ITER){
         double log_zn = log(x*x + y*y) / 2.0;
         double nu = log(log_zn / log(2.0))/log(2.0);
@@ -79,6 +80,7 @@ int main(){
             colors[Py][Px][2] = c.b;
         }
     }
+
     printf("finished calcs\n");
     FILE* fout;
     fout = fopen("output/ms.ppm", "w");
@@ -88,6 +90,7 @@ int main(){
             fwrite(colors[y][x], 1, 3, fout);
         }
     }
+    fclose(fout);
 }
 
 
@@ -107,22 +110,21 @@ Color* make_palette(int size){
 
         if (j<1){
             palette[i] = (Color){
-                    .r = 0,
-                    .g = 255 * j,
-                    .b = 0
+                    .r = 255 * j,
+                    .g = 0,
+                    .b = 255 * j
             };
         }else if(j<2){
             palette[i] = (Color){
-                    .r = 255*(j-1),
-                    .g = 255,
-                    .b = 0,
+                    .r = 255,
+                    .g = 255*(j-1),
+                    .b = 255,
             };
         }else{
             palette[i] = (Color){
-                
                     .r = 255 * (j-2),
                     .g = 255,
-                    .b = 255,
+                    .b = 255 * (j-2),
             };
         }
     }
