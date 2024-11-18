@@ -24,7 +24,6 @@ srun --nodes=1 --ntasks=1 ./mandelbrot_seq
 
 ## Parallel Implementation
 
-
 OpenMP:
 ```bash
 gcc parallel/mandelbrot_openmp.c -o mandelbrot_omp -fopenmp -lm
@@ -35,6 +34,11 @@ Explanation:
 - --nodes=1: Allocates one node.
 - --ntasks=1: Executes a single task (process).
 - --cpus-per-task=8: Allocates 8 cores for the task.
+
+or as batch job
+```bash
+sbatch parallel/batch-job-omp.sh
+```
 
 MPI:
 ```bash
@@ -55,11 +59,11 @@ Demonstration of set rendered in parallel
 looks nice
 
 ```bash
-mpicc iters/mandelbrot.c -o mandelbrot -lm
-mpirun -np $(nproc) -mca btl ^openib mandelbrot
+mpicc iters/mandelbrot.c -o mandelbrot_iters -lm
+srun --nodes=2 --ntasks=16 mandelbrot_iters
 ```
 
-or with Slurm
+or as batch job
 ```bash
 mpicc iters/mandelbrot.c -o iters/a.out -lm -Ofast 
 sbatch iters/iter.sh
@@ -76,10 +80,10 @@ in `multibrot/multibrot.c` set `MIN_POWER` and `MAX_POWER` to set range for X
 
 ```bash
 mpicc multibrot/multibrot.c -o multibrot -lm -Ofast
-mpirun -np $(nproc) -mca btl ^openib multibrot
+srun --nodes=2 --ntasks=16 multibrot
 ```
 
-or with Slurm
+or as batch job
 ```bash
 mpicc multibrot/multibrot.c -o multibrot/a.out -lm -Ofast
 sbatch multibrot/multibrot.sh
@@ -91,10 +95,10 @@ sbatch multibrot/multibrot.sh
 hands down the coolest part
 
 ```bash
-mpicc zoom/mandelbrot.c -o mandelbrot -lm
-mpirun -np $(nproc) -mca btl ^openib mandelbort
+mpicc zoom/mandelbrot.c -o mandelbrot_zoom -lm
+srun --nodes=2 --ntasks=16 mandelbrot_zoom
 ```
-or with Slurm
+or batch job
 ```bash
 mpicc zoom/mandelbrot.c -o zoom/a.out -lm -Ofast
 sbatch zoom/zoom.sh
