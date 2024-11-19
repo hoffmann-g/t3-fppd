@@ -55,7 +55,9 @@ Demonstration of set rendered in parallel
 ![mandelbrot](https://github.com/mvneves/parallel-mandelbrot/raw/master/parallel/parallel.gif)
 
 
-## Iterations
+## Other Variations
+
+### Iterations
 looks nice
 
 ```bash
@@ -71,7 +73,7 @@ sbatch iters/iter.sh
 
 ![mandelbrot](https://github.com/mvneves/parallel-mandelbrot/blob/master/iters/output.gif)
 
-## Multibrot
+### Multibrot
 variation of conventional mandelbrot equation
 ![Equation](https://latex.codecogs.com/png.latex?z_{n%2B1}%20=%20z_n^x%20+%20c)
 where X varies.
@@ -91,7 +93,7 @@ sbatch multibrot/multibrot.sh
 
 [multibrot](https://github.com/mvneves/parallel-mandelbrot/blob/master/multibrot/output/output.mp4)
 
-## Zoom (WIP)
+### Zoom (WIP)
 hands down the coolest part
 
 ```bash
