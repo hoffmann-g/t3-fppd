@@ -3,7 +3,7 @@
 #SBATCH --nodes=1                                   # Ensure all tasks are on one node
 #SBATCH --ntasks=1                                  # Only one process (OpenMP uses threads, not tasks)
 #SBATCH --cpus-per-task=16                          # Max CPUs available for testing
-#SBATCH --time=03:00:00                             # Max total job runtime
+#SBATCH --time=10:00:00                             # Max total job runtime
 #SBATCH --output=omp_test_cases_output_%j.log       # Log file (one for the whole job, %j is the job ID)
 #SBATCH --error=omp_test_cases_error_%j.log         # Error log file
 #SBATCH --exclusive                                 # Allocate the node exclusively (comment out for shared access)

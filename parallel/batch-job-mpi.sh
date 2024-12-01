@@ -3,7 +3,7 @@
 #SBATCH --nodes=2                                   # Specify the number of nodes
 #SBATCH --ntasks=32                                 # Max number of tasks (use mpirun --oversubscribe for more)
 #SBATCH --cpus-per-task=1                           # Number of CPU per tasks
-#SBATCH --time=03:00:00                             # Max total job runtime
+#SBATCH --time=10:00:00                             # Max total job runtime
 #SBATCH --output=mpi_test_cases_output_%j.log       # Log file (one for the whole job, %j is the job ID)
 #SBATCH --error=mpi_test_cases_error_%j.log         # Error log file
 #SBATCH --exclusive                                 # Allocate the node exclusively (comment out for shared access)
