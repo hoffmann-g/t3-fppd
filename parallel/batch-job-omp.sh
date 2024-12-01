@@ -35,7 +35,7 @@
 #   32 threads - 16 of 16 cores
 
 # Compile code
-gcc mandelbrot_openmp.c -o mandelbrot_omp -fopenmp -lm
+gcc parallel/mandelbrot_openmp.c -o mandelbrot_omp -fopenmp -lm
 
 # Run test cases
 echo "Starting tests with OpenMP without hyper-threading:"

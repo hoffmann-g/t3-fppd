@@ -44,10 +44,10 @@
 #       64 threads - 16 of 32 cores
 
 # Dynamically set working directory
-WORKDIR="/home/$USER/t3-fppd"
+WORKDIR="/home/$USER/parallel-mandelbrot"
 
 # Compile code
-mpicc mandelbrot_mpi.c -o mandelbrot_mpi -lm
+mpicc parallel/mandelbrot_mpi.c -o mandelbrot_mpi -lm
 
 # Run test cases
 echo "Starting tests in MPI with single node and without hyperthreading:"
